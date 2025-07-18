@@ -52,16 +52,23 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+				success: {
+					DEFAULT: 'hsl(var(--success))',
+					foreground: 'hsl(var(--success-foreground))'
+				},
+				'purple-glow': 'hsl(var(--purple-glow))',
+				'purple-light': 'hsl(var(--purple-light))',
+				'neon-purple': 'hsl(var(--neon-purple))',
+				'chat-bubble': 'hsl(var(--chat-bubble))',
+				'chat-bubble-user': 'hsl(var(--chat-bubble-user))',
+				'chat-input': 'hsl(var(--chat-input))'
+			},
+			backgroundImage: {
+				'gradient-purple': 'var(--gradient-purple)'
+			},
+			boxShadow: {
+				'glow': 'var(--shadow-glow)',
+				'strong': 'var(--shadow-strong)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
