@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Header } from "@/components/Header";
+import { AppSidebar } from "@/components/AppSidebar";
 import { ChatComponent } from "@/components/ChatComponent";
 import { PostCard } from "@/components/PostCard";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Grid3X3, List, Plus } from "lucide-react";
+import { Search, Grid3X3, List, Plus, Menu } from "lucide-react";
 
 const Preview = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   // Mock data for posts
   const posts = [
@@ -49,25 +50,26 @@ const Preview = () => {
   );
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <div className="min-h-screen bg-background flex">
+      {/* Sidebar */}
+      <AppSidebar />
       
-      <div className="container mx-auto px-6 py-8">
-        {/* Page Header */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">Posts</h1>
-            <p className="text-muted-foreground">Crea y gestiona tus posts generados con IA</p>
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        {/* Top Header */}
+        <div className="h-16 bg-background border-b border-border flex items-center justify-between px-6">
+          <div className="flex items-center gap-4">
+            <h1 className="text-xl font-semibold text-foreground">Posts</h1>
           </div>
-          <Button variant="default" size="lg" className="mt-4 lg:mt-0">
+          <Button variant="default" size="default">
             <Plus className="w-4 h-4 mr-2" />
             Nuevo Post
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-3">
+        {/* Content Area */}
+        <div className="flex-1 p-6">
+          <div className="max-w-4xl mx-auto">
             {/* Search and Filters */}
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <div className="relative flex-1">
@@ -95,6 +97,11 @@ const Preview = () => {
                   <List className="w-4 h-4" />
                 </Button>
               </div>
+            </div>
+
+            {/* Chat Component Centered */}
+            <div className="mb-8">
+              <ChatComponent className="max-w-2xl mx-auto" />
             </div>
 
             {/* Posts Grid */}
@@ -132,11 +139,6 @@ const Preview = () => {
                 <div className="bg-primary h-2 rounded-full w-2/5"></div>
               </div>
             </div>
-          </div>
-
-          {/* Sidebar with Chat */}
-          <div className="lg:col-span-1">
-            <ChatComponent className="h-fit" isSticky />
           </div>
         </div>
       </div>
